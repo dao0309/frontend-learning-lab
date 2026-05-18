@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Tracker</title>
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages/records.css">
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- Sidebar -->
+  <div class="menu-btn">
+    <button id="toggleBtn">☰</button> 
+  </div>
+  <aside id="sidebar" class="sidebar closed">
+    <nav class="nav">
+      <a href="../index.html" class="nav-item active">Dashboard</a>
+      <a href="records.html" class="nav-item">Records</a>
+      <a href="analytics.html" class="nav-item">Analytics</a>
+      <a href="settings.html" class="nav-item">Settings</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <div class="main full">
+
+    <!-- TopBar -->
+    <header class="topbar">
+      <div class="search">
+        <input type="text" placeholder="Search..." />
+      </div>
+
+      <div class="user">
+        <div class="avatar">U</div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="content">
+
+      <!-- ================= ANALYTICS ================= -->
+      <section id="analytics" class="page">
+
+        <h1>Analytics</h1>
+
+        <div class="grid two-col">
+
+          <div class="card">
+            <h2>Weekly Trend</h2>
+            <div class="chart-placeholder">[ Line Chart ]</div>
+          </div>
+
+          <div class="card">
+            <h2>Category</h2>
+            <div class="chart-placeholder">[ Pie Chart ]</div>
+          </div>
+
+        </div>
+
+        <div class="card">
+          <h2>Metrics</h2>
+
+          <div class="metrics">
+            <div>Avg/day: 2.3h</div>
+            <div>Best day: 5h</div>
+            <div>Streak: 14 days</div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+</div>
+<script src="../assets/js/ui/app.js"></script>
+</body>
+</html>

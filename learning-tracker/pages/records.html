@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Tracker</title>
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages/records.css">
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- Sidebar -->
+  <div class="menu-btn">
+    <button id="toggleBtn">☰</button> 
+  </div>
+  <aside id="sidebar" class="sidebar closed">
+    <nav class="nav">
+      <a href="../index.html" class="nav-item active">Dashboard</a>
+      <a href="records.html" class="nav-item">Records</a>
+      <a href="analytics.html" class="nav-item">Analytics</a>
+      <a href="settings.html" class="nav-item">Settings</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <div class="main full">
+
+    <!-- TopBar -->
+    <header class="topbar">
+     <div class="site-name">
+      <h1>learning-tracker</h1>
+     </div>
+      <div class="search">
+        <input id="search" type="text" placeholder="Search..." />
+      </div>
+
+      <div class="user">
+        <div class="avatar">U</div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="content">
+
+<section class="records-page">
+
+  <div class="page-header">
+    <h1>Study Records</h1>
+    <button class="btn primary">
+      + Add Record
+    </button>
+  </div>
+
+  <div class="toolbar card">
+
+    <input
+      type="text"
+      class="input"
+      placeholder="Search..."
+    >
+
+    <select class="select">
+      <option>All Categories</option>
+    </select>
+
+    <select class="select">
+      <option>This Week</option>
+    </select>
+
+  </div>
+
+  <div class="card table-card">
+
+    <table class="table">
+
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Title</th>
+          <th>Time</th>
+          <th>Category</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td>2026/05/14</td>
+          <td>Flexbox復習</td>
+          <td>2h</td>
+          <td>Frontend</td>
+
+          <td>
+            <span class="badge completed">
+              Completed
+            </span>
+          </td>
+
+          <td class="actions">
+            <button>Edit</button>
+            <button>Delete</button>
+          </td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</section>
+
+
+    </main>
+  </div>
+</div>
+
+<script src="../assets/js/ui/app.js"></script>
+</body>
+</html>

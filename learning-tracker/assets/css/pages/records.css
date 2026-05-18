@@ -1,0 +1,28 @@
+.toolbar {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.table tr {
+    margin: 0.5rem;
+}
+
+.table{
+  border-spacing: 1.0rem;
+  border-collapse: separate;
+}
+
+.table-card {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.badge.completed {
+    color: #04b344;
+}
+
+.badge.pending {
+    color: #ffbd4c;
+}

@@ -1,0 +1,7 @@
+.kpi-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.chart-card {
+  height: 320px;
+}
