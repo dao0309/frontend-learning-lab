@@ -1,101 +1,103 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learning Tracker</title>
-<link rel="stylesheet" href="assets/css/base.css">
-<link rel="stylesheet" href="assets/css/layout.css">
-<link rel="stylesheet" href="assets/css/components.css">
-<link rel="stylesheet" href="assets/css/pages/dashboard.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages/dashboard.css">
 </head>
 
 <body>
 
-<div class="app">
+  <div class="app">
 
-  <!-- Sidebar -->
-  <div class="menu-btn">
-    <button id="toggleBtn">☰</button> 
+    <!-- Sidebar -->
+    <div class="menu-btn">
+      <button id="toggleBtn">☰</button>
+    </div>
+    <aside id="sidebar" class="sidebar closed">
+      <nav class="nav">
+        <a href="index.html" class="nav-item active">Dashboard</a>
+        <a href="pages/records.html" class="nav-item">Records</a>
+        <a href="pages/analytics.html" class="nav-item">Analytics</a>
+        <a href="pages/settings.html" class="nav-item">Settings</a>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <div class="main full">
+
+      <!-- TopBar -->
+      <header class="topbar">
+        <div class="site-name">
+          <h1>learning-tracker</h1>
+        </div>
+        <div class="search">
+          <input id="search" type="text" placeholder="Search..." />
+        </div>
+
+        <div class="user">
+          <div class="avatar">U</div>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <main class="content">
+
+        <!-- ================= DASHBOARD ================= -->
+        <section id="dashboard" class="page active">
+
+          <h1>Dashboard</h1>
+
+          <!-- KPI Cards -->
+          <div class="grid kpi-grid">
+
+            <div class="card kpi-card">
+              <div class="label">Total Study</div>
+              <div class="value">120h</div>
+            </div>
+
+            <div class="card kpi-card">
+              <div class="label">Streak</div>
+              <div class="value">14 days</div>
+            </div>
+
+            <div class="card kpi-card">
+              <div class="label">This Week</div>
+              <div class="value">18h</div>
+            </div>
+
+          </div>
+
+          <!-- Chart Area -->
+          <div class="card chart-card">
+            <h2>Weekly Study</h2>
+            <div class="chart-placeholder">[ Bar Chart ]</div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="card">
+            <h2>Recent Activity</h2>
+
+            <ul class="list">
+              <li>JS DOM操作 - 2h</li>
+              <li>CSS Grid復習 - 1.5h</li>
+              <li>LeetCode 2問 - 1h</li>
+            </ul>
+
+          </div>
+
+        </section>
+
+      </main>
+    </div>
   </div>
-  <aside id="sidebar" class="sidebar closed">
-    <nav class="nav">
-      <a href="index.html" class="nav-item active">Dashboard</a>
-      <a href="pages/records.html" class="nav-item">Records</a>
-      <a href="pages/analytics.html" class="nav-item">Analytics</a>
-      <a href="pages/settings.html" class="nav-item">Settings</a>
-    </nav>
-  </aside>
 
-  <!-- Main -->
-  <div class="main full">
-
-    <!-- TopBar -->
-    <header class="topbar">
-     <div class="site-name">
-      <h1>learning-tracker</h1>
-     </div>
-      <div class="search">
-        <input id="search" type="text" placeholder="Search..." />
-      </div>
-
-      <div class="user">
-        <div class="avatar">U</div>
-      </div>
-    </header>
-
-    <!-- Content -->
-    <main class="content">
-
-      <!-- ================= DASHBOARD ================= -->
-      <section id="dashboard" class="page active">
-
-        <h1>Dashboard</h1>
-
-        <!-- KPI Cards -->
-        <div class="grid kpi-grid">
-
-          <div class="card kpi-card">
-            <div class="label">Total Study</div>
-            <div class="value">120h</div>
-          </div>
-
-          <div class="card kpi-card">
-            <div class="label">Streak</div>
-            <div class="value">14 days</div>
-          </div>
-
-          <div class="card kpi-card">
-            <div class="label">This Week</div>
-            <div class="value">18h</div>
-          </div>
-
-        </div>
-
-        <!-- Chart Area -->
-        <div class="card chart-card">
-          <h2>Weekly Study</h2>
-          <div class="chart-placeholder">[ Bar Chart ]</div>
-        </div>
-
-        <!-- Recent Activity -->
-        <div class="card">
-          <h2>Recent Activity</h2>
-
-          <ul class="list">
-            <li>JS DOM操作 - 2h</li>
-            <li>CSS Grid復習 - 1.5h</li>
-            <li>LeetCode 2問 - 1h</li>
-          </ul>
-
-        </div>
-
-      </section>
-
-    </main>
-  </div>
-</div>
-
-<script src="./assets/js/ui/app.js"></script>
+  <script src="./assets/js/ui/app.js"></script>
 </body>
+
 </html>

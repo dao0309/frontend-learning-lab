@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,71 +13,72 @@
 
 <body>
 
-<div class="app">
+  <div class="app">
 
-  <!-- Sidebar -->
-  <div class="menu-btn">
-    <button id="toggleBtn">☰</button> 
-  </div>
-  <aside id="sidebar" class="sidebar closed">
-    <div class="logo">LT</div>
-    <nav class="nav">
-      <a href="../index.html" class="nav-item active">Dashboard</a>
-      <a href="records.html" class="nav-item">Records</a>
-      <a href="analytics.html" class="nav-item">Analytics</a>
-      <a href="settings.html" class="nav-item">Settings</a>
-    </nav>
-  </aside>
+    <!-- Sidebar -->
+    <div class="menu-btn">
+      <button id="toggleBtn">☰</button>
+    </div>
+    <aside id="sidebar" class="sidebar closed">
+      <div class="logo">LT</div>
+      <nav class="nav">
+        <a href="../index.html" class="nav-item active">Dashboard</a>
+        <a href="records.html" class="nav-item">Records</a>
+        <a href="analytics.html" class="nav-item">Analytics</a>
+        <a href="settings.html" class="nav-item">Settings</a>
+      </nav>
+    </aside>
 
-  <!-- Main -->
-  <div class="main full">
+    <!-- Main -->
+    <div class="main full">
 
-    <!-- TopBar -->
-    <header class="topbar">
-      <div class="search">
-        <input type="text" placeholder="Search..." />
-      </div>
-
-      <div class="user">
-        <div class="avatar">U</div>
-      </div>
-    </header>
-
-    <!-- Content -->
-    <main class="content">
-
-      <!-- ================= SETTINGS ================= -->
-      <section id="settings" class="page">
-
-        <h1>Settings</h1>
-
-        <div class="card form-card">
-
-          <label>
-            Daily Target
-            <input type="number" value="2" /> hours
-          </label>
-
-          <label>
-            <input type="checkbox" />
-            Enable Notifications
-          </label>
-
-          <label>
-            Theme
-            <select>
-              <option>Light</option>
-              <option>Dark</option>
-            </select>
-          </label>
-
+      <!-- TopBar -->
+      <header class="topbar">
+        <div class="search">
+          <input type="text" placeholder="Search..." />
         </div>
 
-      </section>
+        <div class="user">
+          <div class="avatar">U</div>
+        </div>
+      </header>
 
-    </main>
+      <!-- Content -->
+      <main class="content">
+
+        <!-- ================= SETTINGS ================= -->
+        <section id="settings" class="page">
+
+          <h1>Settings</h1>
+
+          <div class="card form-card">
+
+            <label>
+              Daily Target
+              <input type="number" value="2" /> hours
+            </label>
+
+            <label>
+              <input type="checkbox" />
+              Enable Notifications
+            </label>
+
+            <label>
+              Theme
+              <select>
+                <option>Light</option>
+                <option>Dark</option>
+              </select>
+            </label>
+
+          </div>
+
+        </section>
+
+      </main>
+    </div>
   </div>
-</div>
-<script src="../assets/js/ui/app.js"></script>
+  <script src="../assets/js/ui/app.js"></script>
 </body>
+
 </html>

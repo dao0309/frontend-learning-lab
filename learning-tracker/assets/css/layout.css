@@ -26,7 +26,7 @@
 }
 
 #toggleBtn {
- font-size: 1.5rem;
+  font-size: 1.5rem;
   color: white;
   background: #1e1e2f;
   border: 1px solid white;
@@ -88,7 +88,7 @@
   padding: 0.5rem;
 }
 
-.user{
+.user {
   margin-left: auto;
   margin-right: 1.5rem;
   margin-top: 1.5rem;
