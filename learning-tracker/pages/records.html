@@ -52,9 +52,6 @@
 
           <div class="page-header">
             <h1>Study Records</h1>
-            <button class="btn primary">
-              + Add Record
-            </button>
           </div>
 
           <div class="toolbar card">
@@ -72,7 +69,20 @@
           </div>
 
           <div class="card form-card">
-            <input>
+
+            <input type="date" id="dateInput" class="input">
+            <input type="text" id="titleInput" class="input" placeholder="Study title">
+            <input type="number" id="hoursInput" class="input" placeholder="hours">
+            <input type="text" id="categoryInput" class="input" placeholder="Category">
+
+            <select id="statusInput" class="select">
+              <option value="Completed">Completed</option>
+              <option value="Pending">Pending</option>
+            </select>
+
+            <button class="btn primary" onclick="handleAddRecord()">
+              + Add Record
+            </button>
           </div>
 
           <div class="card table-card">
@@ -115,7 +125,34 @@
             </table>
 
           </div>
+          <!-- modal -->
+          <div id="editModal" class="modal hidden">
+            <div class="modal-content">
+              <h2>Edit Record</h2>
 
+              <input type="hidden" id="editId">
+
+              <label>date</label>
+              <input type="date" id="editDate" class="input">
+              <label>Title</label>
+              <input type="text" id="editTitle">
+              <label>Hours</label>
+              <input type="number" id="editHours">
+              <label>Category</label>
+              <input type="text" id="editCategory">
+
+              <label>Status</label>
+              <select id="editStatus">
+                <option value="Pending">Pending</option>
+                <option value="Completed">Completed</option>
+              </select>
+
+              <div class="modal-actions">
+                <button onclick="saveEditedRecord()">Save</button>
+                <button onclick="closeModal()">Cancel</button>
+              </div>
+            </div>
+          </div>
         </section>
 
 
@@ -124,6 +161,7 @@
   </div>
 
   <script src="../assets/js/ui/app.js"></script>
+  <script src="../assets/js/records.js"></script>
 </body>
 
 </html>
