@@ -16,7 +16,8 @@ function setDateToday() {
 
 // ページが読み込まれたときにRecotdを読み込み
 document.addEventListener('DOMContentLoaded', () => {
-    renderRecords();
+    const records = storage.getRecords();
+    renderRecords(records);
     setDateToday();
 });
 
@@ -34,50 +35,14 @@ const defaultRecords = [
 
 const STORAGE_KEY = "study_records";
 
-/**
- * Recordの取得処理
- * @returns data Learning Records
- */
-function getRecords() {
-    const raw = localStorage.getItem(STORAGE_KEY);
-
-    // データが存在しない場合、初期データをlocalstorageに保存して表示
-    if (!raw) {
-        localStorage.setItem(
-            STORAGE_KEY, JSON.stringify(defaultRecords)
-        );
-
-        return defaultRecords;
-    }
-
-    const data = JSON.parse(raw);
-
-    // 配列でない場合、初期データをlocalstorageに保存して表示
-    if (!Array.isArray(data)) {
-        localStorage.setItem(
-            STORAGE_KEY, JSON.stringify(defaultRecords)
-        );
-        return defaultRecords;
-    }
-    return data;
-}
-
-/**
- * Recordの保存処理
- * @param records Learning Records
- */
-function saveRecords(records) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
-}
 
 /**
  * Record一覧表示処理
  */
-function renderRecords() {
+function renderRecords(records) {
     const tbody = document.getElementById("recordsBody");
     tbody.innerHTML = "";
 
-    const records = getRecords();
     console.log(records);
 
     records.forEach(r => {
@@ -99,62 +64,11 @@ function renderRecords() {
 
             <td class="actions">
               <button onclick="openEditModal(${r.id})">Edit</button>
-             <button onclick="deleteRecord(${r.id})">Delete</button>
+             <button onclick="storage.deleteRecord(${r.id})">Delete</button>
             </td>
         `;
         tbody.appendChild(tr);
     });
-}
-
-
-
-/**
- * Record追加処理
- * @param record Learning Record
- */
-function addRecord(record) {
-    const records = getRecords();
-    records.push(record);
-    saveRecords(records);
-    renderRecords();
-}
-
-/**
- * Record削除処理
- * @param {*} id 
- */
-function deleteRecord(id) {
-    let records = getRecords();
-    records = records.filter(r => r.id !== id);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
-    renderRecords();
-}
-
-/**
- * 編集したLearning RecordをLocalStrageに保存
- * @returns 
- */
-function saveEditedRecord() {
-    const id = Number(document.getElementById("editId").value);
-    const records = getRecords();
-    const index = records.findIndex(r => r.id === id);
-
-    if (index === -1) return;
-
-    records[index] = {
-        ...records[index],
-        date: document.getElementById("editDate").value,
-        title: document.getElementById("editTitle").value,
-        hours: Number(document.getElementById("editHours").value),
-        category: document.getElementById("editCategory").value,
-        status: document.getElementById("editStatus").value
-    };
-
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
-
-    closeModal();
-    renderRecords();
-
 }
 
 /**
@@ -163,7 +77,7 @@ function saveEditedRecord() {
  * @returns 
  */
 function openEditModal(id) {
-    const records = getRecords();
+    const records = storage.getRecords();
     const record = records.find(r => r.id === id);
 
     if (!record) return;
@@ -188,13 +102,48 @@ function closeModal() {
 }
 
 /**
+ * 検索条件に合うRecordを取得
+ */
+function searchRecord() {
+    let records = storage.getRecords();
+
+    const searchText = document.getElementById("searchText").value;
+    const searchTerm = document.getElementById("searchTerm").value;
+
+    // searchTermの値によって絞り込む期間を決定
+    const now = new Date();
+    let searchTermDate = null;
+
+    if (searchTerm === "thisWeek") {
+        searchTermDate = new Date();
+        searchTermDate.setDate(now.getDate() - now.getDay());
+        searchTermDate.setHours(0, 0, 0, 0);
+    } else if (searchTerm === "thisMonth") {
+        searchTermDate = new Date(now.getFullYear(), now.getMonth(), 1);
+    }
+
+    records = records.filter(r => {
+        const date = new Date(r.date);
+
+        const matchTitle = r.title.includes(searchText);
+        const matchPeriod =
+            searchTerm === "all" || date >= searchTermDate;
+
+        return matchTitle && matchPeriod;
+    });
+
+    renderRecords(records);
+
+}
+
+/**
  * inputから取得したRecordをオブジェクトに変換する
  * @returns record Learning Record
  */
 function handleAddRecord() {
 
     // IDを計算
-    const records = getRecords();
+    const records = storage.getRecords();
     let id = 1;
     if (records !== null) {
         id = calcNextId(records);
@@ -209,7 +158,7 @@ function handleAddRecord() {
         status: document.getElementById("statusInput").value
     }
 
-    addRecord(record);
+    storage.addRecord(record);
 }
 
 /**
